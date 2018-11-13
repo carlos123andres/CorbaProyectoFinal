@@ -1,19 +1,24 @@
-
 package Corba;
 import ConexionBD.ConexionBaseDato;
-import Mascotas.*;
+import Pesos.*;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-public class MascotaTabla extends MascotaPOA{
-     ConexionBaseDato objConect = new ConexionBaseDato(); 
-     
+/**
+ *
+ * @author Ruben
+ */
+public class PesoTabla extends PesoPOA{
+
+    ConexionBaseDato objConect = new ConexionBaseDato(); 
+    
+    
     @Override
-    public boolean insertarMascota(int codigo, String apodo, String especie, String raza, String colorPelo, String fechaNacimiento, int numeroVacuna, String nombreVacuna) {
+    public boolean insertarPeso(int id, String apodo, String fecha, String peso) {
         boolean resultado = false;
         try {
-            String sql = "insert into mascota (codigo,apodo,especie,raza,colorPelo, fechaNacimiento, numeroVacunas, nombreVacunas) values ('"+codigo+"','"+apodo+"','"+especie+"','"+raza+"','"+colorPelo+"','"+fechaNacimiento+"','"+numeroVacuna+"','"+numeroVacuna+"')";
+            String sql = "insert into peso (nickname,fecha,peso) values ('"+apodo+"','"+fecha+"','"+peso+"')";
             objConect.conectar();
             Statement st = objConect.conex.createStatement();
             int valor = st.executeUpdate(sql);
@@ -27,14 +32,14 @@ public class MascotaTabla extends MascotaPOA{
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Lo sentimos, el código o el usuario ya se encuentran registrados. ¡Por favor, vuelva a intentarlo!" + e.getMessage()); 
         }        
-        return resultado; 
+        return resultado;
     }
 
     @Override
-    public boolean actualizarMascota(int codigo, String apodo, String especie, String raza, String colorPelo, String fechaNacimiento, int numeroVacuna, String nombreVacuna) {
+    public boolean actualizarPeso(int id, String apodo, String fecha, String peso) {
         boolean resultado = false;
         try {
-            String sql = "UPDATE mascota SET apodo = '"+apodo+"', especie = '"+especie+"', raza = '"+raza+"', colorPelo = '"+colorPelo+"', fechaNacimiento = '"+fechaNacimiento+"', numeroVcuna = '"+numeroVacuna+"', nombreVacuna = '"+nombreVacuna+"' where codigo = '"+codigo+"' ";
+            String sql = "UPDATE peso SET apodo = '"+apodo+"', fecha = '"+fecha+"', peso = '"+peso+"' where id = '"+id+"' ";
             //Se realiza la conexión con la base de datos
             objConect.conectar();
             Statement st = objConect.conex.createStatement();
@@ -52,10 +57,10 @@ public class MascotaTabla extends MascotaPOA{
     }
 
     @Override
-    public boolean eliminarMascota(int codigo) {
+    public boolean eliminarPeso(int id) {
         boolean resultado = false;
         try {
-            String sql = "Delete from credenciales where codigo = " +codigo;
+            String sql = "Delete from peso where id = " +id;
             //Se realiza la conexión con la base de datos
             objConect.conectar();
             Statement st = objConect.conex.createStatement();
@@ -73,12 +78,12 @@ public class MascotaTabla extends MascotaPOA{
     }
 
     @Override
-    public String consultarMascota(int codigo) {
+    public String consultarPeso(int id) {
         String resultado = "";
         
         try {
             
-            String sqlConsultar = "Select * from credenciales where codigo = " + codigo;
+            String sqlConsultar = "Select * from credenciales where codigo = " + id;
             //Se realiza la conexión con la base de datos
             objConect.conectar();
             Statement st = objConect.conex.createStatement();
@@ -101,12 +106,13 @@ public class MascotaTabla extends MascotaPOA{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public ResultSet cargarMascota(){
+    
+    public ResultSet cargarPeso(){
         
        ResultSet resultado = null;
        
         try {
-            String sqlConsultar = "SELECT  M.codigo, M.apodo, M.especie, M.raza, M.colorPelo, M.fechaNacimiento, M.numeroVacunas, M.nombreVacunas FROM mascota M ";
+            String sqlConsultar = "SELECT P.id, P.nickname, P.fecha, P.peso FROM peso P ";
             //Se realiza la conexión con la base de datos
             objConect.conectar();
             Statement st = objConect.conex.createStatement();
@@ -122,4 +128,25 @@ public class MascotaTabla extends MascotaPOA{
        return resultado;
     }
     
+    public ResultSet cargarID(){
+        
+       ResultSet resultado = null;
+       
+       
+        try {
+            String sqlConsultar = "SELECT MAX(P.id) FROM peso P";
+            //Se realiza la conexión con la base de datos
+            objConect.conectar();
+            Statement st = objConect.conex.createStatement();
+            resultado = st.executeQuery(sqlConsultar);
+           
+            //Cerrar las conexiones.
+            //st.close();
+            //objConect.conex.close();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error " + e.getMessage());
+        }
+       return resultado;
+    }
 }

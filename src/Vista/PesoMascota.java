@@ -1,6 +1,7 @@
 package Vista;
 
 import Corba.MascotaTabla;
+import Corba.PesoTabla;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -9,13 +10,17 @@ import javax.swing.table.TableRowSorter;
 public class PesoMascota extends javax.swing.JFrame {
     
     //Variables Globales
-    private DefaultTableModel modeloTBLMascota;
+    private DefaultTableModel modeloTBLPeso;
     TableRowSorter trs;
    
     public PesoMascota() {
         initComponents();
         //Sirve para que la ventana aparezca en el centro.
         this.setLocationRelativeTo(null);
+        txtId.setEditable(false);
+        cargarID();
+        
+        
     }
 
    
@@ -91,6 +96,11 @@ public class PesoMascota extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, -1, -1));
 
         btnGuardar.setText("Guardar");
@@ -110,9 +120,19 @@ public class PesoMascota extends javax.swing.JFrame {
         jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, -1, -1));
 
         btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, -1, -1));
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, -1, -1));
 
         btnSiguiente.setText("Siguiente");
@@ -133,70 +153,43 @@ public class PesoMascota extends javax.swing.JFrame {
         });
         jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 110, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 390));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-         if(txtCodigo.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Por favor, Digita el codigo");
-            txtCodigo.requestFocus();
-            return;
-        }
-         if(txtColorPelo.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Por favor, Digita el color de pelo");
-            txtColorPelo.requestFocus();
-            return;
-        }
-         if(txtFecha.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Por favor, Digita la especie");
-            txtFecha.requestFocus();
-            return;
-        }
-         if(txtFechaNacimiento.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Por favor, Digita la fecha de nacimiento");
-            txtFechaNacimiento.requestFocus();
-            return;
-        }
+       
          if(txtNickname.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Por favor, Digita el Nickname");
             txtNickname.requestFocus();
             return;
         }
-         if(txtNombreVacuna.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Por favor, Digita nombre de la vacuna");
-            txtNombreVacuna.requestFocus();
+         if(txtFecha.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Por favor, Digita la fecha");
+            txtFecha.requestFocus();
             return;
         }
          if(txtPeso.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Por favor, Digita la raza");
+            JOptionPane.showMessageDialog(null, "Por favor, Digita el peso");
             txtPeso.requestFocus();
             return;
         }
-         if(txtNumeroVacunas.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Por favor, Digita el numero de vacunas");
-            txtNumeroVacunas.requestFocus();
-            return;
-        }
+      
          
-        MascotaTabla objMascota = new MascotaTabla(); 
+        PesoTabla objPeso = new PesoTabla(); 
          
-        int codigo = Integer.parseInt(txtCodigo.getText());
         String nickname = txtNickname.getText();
         String especie = txtFecha.getText();
-        String raza = txtPeso.getText();
-        String colorPelo = txtColorPelo.getText();
-        String fechaNacimiento = txtFechaNacimiento.getText();
-        int numeroVacunas = Integer.parseInt(txtNumeroVacunas.getText());
-        String nombreVacunas = txtNombreVacuna.getText();
+        String peso = txtPeso.getText();
          
         try {
-            boolean resultado = objMascota.insertarMascota(codigo, nickname, especie , raza, colorPelo, fechaNacimiento, numeroVacunas, nombreVacunas);
+            boolean resultado = objPeso.insertarPeso(0, nickname, especie , peso);
             if(resultado == true){
                 JOptionPane.showMessageDialog(null, "Se inserto un nuevo registro.");
                 //Utilizamos el objeto para limpiar todos los campos.
                 limpiar();
+                cargarID();
             }else{
                 JOptionPane.showMessageDialog(null, "Error al insertar.");
             }
@@ -220,22 +213,34 @@ public class PesoMascota extends javax.swing.JFrame {
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limpiar();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 //Metodo para cargar las columnas en la tabla
     private void getColumn(){
-        modeloTBLMascota = (DefaultTableModel) tblPesoMascota.getModel();
+        modeloTBLPeso = (DefaultTableModel) tblPesoMascota.getModel();
         // Cargo las columnas de titulo al Jtable
-        modeloTBLMascota.addColumn("Id");
-        modeloTBLMascota.addColumn("Nickname");
-        modeloTBLMascota.addColumn("Fecha");
-        modeloTBLMascota.addColumn("Peso");  
+        modeloTBLPeso.addColumn("Id");
+        modeloTBLPeso.addColumn("Nickname");
+        modeloTBLPeso.addColumn("Fecha");
+        modeloTBLPeso.addColumn("Peso");  
     }
     
     //Metodo para cargar los registros en la tabla
     private void cargarTabla(){
-        MascotaTabla objMascota = new MascotaTabla();
+        PesoTabla objPeso = new PesoTabla();
         //Se Identifica el modelo de la JTable
-        modeloTBLMascota = (DefaultTableModel) tblPesoMascota.getModel();
-        ResultSet resultado = objMascota.cargarMascota();
+        modeloTBLPeso = (DefaultTableModel) tblPesoMascota.getModel();
+        ResultSet resultado = objPeso.cargarPeso();
         try {
             Object datos[] = new Object[4];
             while(resultado.next()){
@@ -243,20 +248,39 @@ public class PesoMascota extends javax.swing.JFrame {
                     //Importante, el getObject tiene que ser mayor que 0 por ende se coloca el 1
                     datos[i] = resultado.getObject(i + 1);
                 }
-                modeloTBLMascota.addRow(datos);
+                modeloTBLPeso.addRow(datos);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }
     
+    private void cargarID(){
+        PesoTabla objPeso = new PesoTabla();
+        ResultSet resultado = objPeso.cargarPeso();
+        int contador = 0;
+        
+        try {
+            // Incremento el contador para almacenar el registro con este nuevo indice
+            resultado.next();
+            
+            contador = resultado.getInt("id") + 1;
+            
+            txtId.setText(String.valueOf(contador));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+    }
+    
+    
+    
     private void limpiar() {
         
-        modeloTBLMascota = (DefaultTableModel) tblPesoMascota.getModel();
+        modeloTBLPeso = (DefaultTableModel) tblPesoMascota.getModel();
         
         // Limpio las filas y las columnas de la tabla
-        modeloTBLMascota.setColumnCount(0);
-        modeloTBLMascota.setNumRows(0);
+        modeloTBLPeso.setColumnCount(0);
+        modeloTBLPeso.setNumRows(0);
         
         txtId.setText("");
         txtNickname.setText("");

@@ -111,6 +111,11 @@ public class Mascota extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, -1, -1));
 
         btnGuardar.setText("Guardar");
@@ -232,6 +237,10 @@ public class Mascota extends javax.swing.JFrame {
         getColumn();
         cargarTabla(); 
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limpiar();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 //Metodo para cargar las columnas en la tabla
     private void getColumn(){
         modeloTBLMascota = (DefaultTableModel) tblMascota.getModel();

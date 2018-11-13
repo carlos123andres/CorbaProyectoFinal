@@ -1,0 +1,16 @@
+module Pesos {
+    interface Peso{
+        
+        boolean insertarPeso(in long id, in wstring apodo, in wstring fecha, in wstring peso);
+
+        boolean actualizarPeso(in long id, in wstring apodo, in wstring fecha, in wstring peso);
+        
+        boolean eliminarPeso(in long id);
+        
+        wstring consultarPeso(in long id);
+       
+        oneway void shutdown();  
+    };
+};
+
+
