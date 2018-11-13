@@ -1,0 +1,15 @@
+module Mascotas {
+    interface Mascota{
+        
+        boolean insertarMascota(in long codigo, in wstring apodo, in wstring especie, in wstring raza, in wstring colorPelo, in wstring fechaNacimiento, in long numeroVacuna, in wstring nombreVacuna);
+        
+        boolean actualizarMascota(in long codigo, in wstring apodo, in wstring especie, in wstring raza, in wstring colorPelo, in wstring fechaNacimiento, in long numeroVacuna, in wstring nombreVacuna);        
+
+        boolean eliminarMascota(in long codigo);
+        
+        wstring consultarMascota(in long codigo);
+       
+        oneway void shutdown();  
+    };
+};
+
