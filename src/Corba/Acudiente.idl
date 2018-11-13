@@ -1,0 +1,16 @@
+module Acudientes {
+    interface Acudiente{
+        
+        boolean insertarAcudiente(in long identificacion, in wstring nombre, in wstring apellido, in wstring telefono, in wstring direccion, in wstring correo);
+        
+        boolean actualizarAcudiente(in long identificacion, in wstring nombre, in wstring apellido, in wstring telefono, in wstring direccion, in wstring correo);        
+
+        boolean eliminarAcudiente(in long identificacion);
+        
+        wstring consultarAcudiente(in long identificacion);
+       
+        oneway void shutdown();  
+    };
+};
+
+

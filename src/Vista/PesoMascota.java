@@ -141,6 +141,11 @@ public class PesoMascota extends javax.swing.JFrame {
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, -1, -1));
 
         btnSiguiente.setText("Siguiente");
+        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, -1, -1));
 
         btnAtras.setText("Atras");
@@ -343,6 +348,13 @@ public class PesoMascota extends javax.swing.JFrame {
         
         mostrarVentana.setVisible(true);
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+        this.dispose();
+        Dueño mostrarVentana = new Dueño();
+        
+        mostrarVentana.setVisible(true);
+    }//GEN-LAST:event_btnSiguienteActionPerformed
 //Metodo para cargar las columnas en la tabla
     private void getColumn(){
         modeloTBLPeso = (DefaultTableModel) tblPesoMascota.getModel();
