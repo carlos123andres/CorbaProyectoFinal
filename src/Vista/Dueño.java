@@ -7,13 +7,13 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-public class Mascota extends javax.swing.JFrame {
+public class Dueño extends javax.swing.JFrame {
     
     //Variables Globales
     private DefaultTableModel modeloTBLMascota;
     TableRowSorter trs;
    
-    public Mascota() {
+    public Dueño() {
         initComponents();
         //Sirve para que la ventana aparezca en el centro.
         this.setLocationRelativeTo(null);
@@ -25,18 +25,16 @@ public class Mascota extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtNumeroVacunas = new javax.swing.JTextField();
-        txtNickname = new javax.swing.JTextField();
-        txtEspecie = new javax.swing.JTextField();
-        txtRaza = new javax.swing.JTextField();
-        txtColorPelo = new javax.swing.JTextField();
-        txtFechaNacimiento = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMascota = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
@@ -45,52 +43,45 @@ public class Mascota extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        btnSiguente = new javax.swing.JButton();
+        btnAtras = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        txtNombreVacuna = new javax.swing.JTextField();
+        txtIdentificacion = new javax.swing.JTextField();
+        btnSiguente1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 204, 153));
-        jLabel1.setText("N° Vacunas");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
-
         jLabel2.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 204, 153));
-        jLabel2.setText("Nickname");
+        jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 204, 153));
-        jLabel3.setText("Especie");
+        jLabel3.setText("Apellido");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 204, 153));
-        jLabel4.setText("Raza");
+        jLabel4.setText("Telefono");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 204, 153));
-        jLabel5.setText("Color Pelo");
+        jLabel5.setText("Direccion");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 204, 153));
-        jLabel6.setText("Fecha Nacimiento");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
-        jPanel1.add(txtNumeroVacunas, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 110, -1));
-        jPanel1.add(txtNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 110, -1));
-        jPanel1.add(txtEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 110, -1));
-        jPanel1.add(txtRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 110, -1));
-        jPanel1.add(txtColorPelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 110, -1));
-        jPanel1.add(txtFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 110, -1));
+        jLabel6.setText("Correo");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 110, -1));
+        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 110, -1));
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 110, -1));
+        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 110, -1));
+        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 110, -1));
 
         tblMascota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,7 +103,7 @@ public class Mascota extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel7.setText("MASCOTAS");
+        jLabel7.setText("Acudiente");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
 
         btnLimpiar.setText("Limpiar");
@@ -155,55 +146,57 @@ public class Mascota extends javax.swing.JFrame {
         });
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, -1, -1));
 
-        btnSiguente.setText("Siguiente");
-        btnSiguente.addActionListener(new java.awt.event.ActionListener() {
+        btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSiguenteActionPerformed(evt);
+                btnAtrasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSiguente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, -1, -1));
+        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 204, 153));
-        jLabel8.setText("Codigo");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
-        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 110, -1));
+        jLabel8.setText("Identificacion");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+        jPanel1.add(txtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 110, -1));
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 204, 153));
-        jLabel9.setText("Nombre vacunas");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
-        jPanel1.add(txtNombreVacuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 110, -1));
+        btnSiguente1.setText("Siguiente");
+        btnSiguente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguente1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSiguente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 390));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-         if(txtCodigo.getText().equals("")){
+         if(txtIdentificacion.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Por favor, Digita el codigo");
-            txtCodigo.requestFocus();
+            txtIdentificacion.requestFocus();
             return;
         }
-         if(txtColorPelo.getText().equals("")){
+         if(txtDireccion.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Por favor, Digita el color de pelo");
-            txtColorPelo.requestFocus();
+            txtDireccion.requestFocus();
             return;
         }
-         if(txtEspecie.getText().equals("")){
+         if(txtApellido.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Por favor, Digita la especie");
-            txtEspecie.requestFocus();
+            txtApellido.requestFocus();
             return;
         }
-         if(txtFechaNacimiento.getText().equals("")){
+         if(txtCorreo.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Por favor, Digita la fecha de nacimiento");
-            txtFechaNacimiento.requestFocus();
+            txtCorreo.requestFocus();
             return;
         }
-         if(txtNickname.getText().equals("")){
+         if(txtNombre.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Por favor, Digita el Nickname");
-            txtNickname.requestFocus();
+            txtNombre.requestFocus();
             return;
         }
          if(txtNombreVacuna.getText().equals("")){
@@ -211,9 +204,9 @@ public class Mascota extends javax.swing.JFrame {
             txtNombreVacuna.requestFocus();
             return;
         }
-         if(txtRaza.getText().equals("")){
+         if(txtTelefono.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Por favor, Digita la raza");
-            txtRaza.requestFocus();
+            txtTelefono.requestFocus();
             return;
         }
          if(txtNumeroVacunas.getText().equals("")){
@@ -224,12 +217,12 @@ public class Mascota extends javax.swing.JFrame {
          
         MascotaTabla objMascota = new MascotaTabla(); 
          
-        int codigo = Integer.parseInt(txtCodigo.getText());
-        String nickname = txtNickname.getText();
-        String especie = txtEspecie.getText();
-        String raza = txtRaza.getText();
-        String colorPelo = txtColorPelo.getText();
-        String fechaNacimiento = txtFechaNacimiento.getText();
+        int codigo = Integer.parseInt(txtIdentificacion.getText());
+        String nickname = txtNombre.getText();
+        String especie = txtApellido.getText();
+        String raza = txtTelefono.getText();
+        String colorPelo = txtDireccion.getText();
+        String fechaNacimiento = txtCorreo.getText();
         int numeroVacunas = Integer.parseInt(txtNumeroVacunas.getText());
         String nombreVacunas = txtNombreVacuna.getText();
          
@@ -274,29 +267,29 @@ public class Mascota extends javax.swing.JFrame {
         
         
         
-        if(txtCodigo.getText().equals("")){
+        if(txtIdentificacion.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Por favor, Digita el codigo");
-            txtCodigo.requestFocus();
+            txtIdentificacion.requestFocus();
             return;
         }
-         if(txtColorPelo.getText().equals("")){
+         if(txtDireccion.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Por favor, Digita el color de pelo");
-            txtColorPelo.requestFocus();
+            txtDireccion.requestFocus();
             return;
         }
-         if(txtEspecie.getText().equals("")){
+         if(txtApellido.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Por favor, Digita la especie");
-            txtEspecie.requestFocus();
+            txtApellido.requestFocus();
             return;
         }
-         if(txtFechaNacimiento.getText().equals("")){
+         if(txtCorreo.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Por favor, Digita la fecha de nacimiento");
-            txtFechaNacimiento.requestFocus();
+            txtCorreo.requestFocus();
             return;
         }
-         if(txtNickname.getText().equals("")){
+         if(txtNombre.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Por favor, Digita el Nickname");
-            txtNickname.requestFocus();
+            txtNombre.requestFocus();
             return;
         }
          if(txtNombreVacuna.getText().equals("")){
@@ -304,9 +297,9 @@ public class Mascota extends javax.swing.JFrame {
             txtNombreVacuna.requestFocus();
             return;
         }
-         if(txtRaza.getText().equals("")){
+         if(txtTelefono.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Por favor, Digita la raza");
-            txtRaza.requestFocus();
+            txtTelefono.requestFocus();
             return;
         }
          if(txtNumeroVacunas.getText().equals("")){
@@ -319,12 +312,12 @@ public class Mascota extends javax.swing.JFrame {
             
             MascotaTabla objPeso = new MascotaTabla(); 
          
-            int codigo = Integer.parseInt(txtCodigo.getText());
-            String nickname = txtNickname.getText();
-            String especie = txtEspecie.getText();
-            String raza = txtRaza.getText();
-            String colorPelo = txtColorPelo.getText();
-            String fechaNacimiento = txtFechaNacimiento.getText();
+            int codigo = Integer.parseInt(txtIdentificacion.getText());
+            String nickname = txtNombre.getText();
+            String especie = txtApellido.getText();
+            String raza = txtTelefono.getText();
+            String colorPelo = txtDireccion.getText();
+            String fechaNacimiento = txtCorreo.getText();
             int numeroVacunas = Integer.parseInt(txtNumeroVacunas.getText());
             String nombreVacunas = txtNombreVacuna.getText();
             
@@ -352,12 +345,12 @@ public class Mascota extends javax.swing.JFrame {
         
         // Asigno el elemento seleccionado de la tabla a los respectivos campos del formulario
         try {
-            txtCodigo.setText(String.valueOf(modeloTBLMascota.getValueAt(tblMascota.getSelectedRow(), 0)));
-            txtNickname.setText(String.valueOf(modeloTBLMascota.getValueAt(tblMascota.getSelectedRow(), 1)));
-            txtEspecie.setText(String.valueOf(modeloTBLMascota.getValueAt(tblMascota.getSelectedRow(), 2)));
-            txtRaza.setText(String.valueOf(modeloTBLMascota.getValueAt(tblMascota.getSelectedRow(), 3)));
-            txtColorPelo.setText(String.valueOf(modeloTBLMascota.getValueAt(tblMascota.getSelectedRow(), 4)));
-            txtFechaNacimiento.setText(String.valueOf(modeloTBLMascota.getValueAt(tblMascota.getSelectedRow(), 5)));
+            txtIdentificacion.setText(String.valueOf(modeloTBLMascota.getValueAt(tblMascota.getSelectedRow(), 0)));
+            txtNombre.setText(String.valueOf(modeloTBLMascota.getValueAt(tblMascota.getSelectedRow(), 1)));
+            txtApellido.setText(String.valueOf(modeloTBLMascota.getValueAt(tblMascota.getSelectedRow(), 2)));
+            txtTelefono.setText(String.valueOf(modeloTBLMascota.getValueAt(tblMascota.getSelectedRow(), 3)));
+            txtDireccion.setText(String.valueOf(modeloTBLMascota.getValueAt(tblMascota.getSelectedRow(), 4)));
+            txtCorreo.setText(String.valueOf(modeloTBLMascota.getValueAt(tblMascota.getSelectedRow(), 5)));
             txtNumeroVacunas.setText(String.valueOf(modeloTBLMascota.getValueAt(tblMascota.getSelectedRow(), 6)));
             txtNombreVacuna.setText(String.valueOf(modeloTBLMascota.getValueAt(tblMascota.getSelectedRow(), 7)));
             
@@ -385,7 +378,7 @@ public class Mascota extends javax.swing.JFrame {
 
         try {
             
-            int codigo = Integer.parseInt(txtCodigo.getText());
+            int codigo = Integer.parseInt(txtIdentificacion.getText());
 
             boolean resultado = objMascota.eliminarMascota(codigo);
             if(resultado == true){
@@ -401,12 +394,16 @@ public class Mascota extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void btnSiguenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguenteActionPerformed
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         this.dispose();
         PesoMascota mostrarVentana = new PesoMascota();
         
         mostrarVentana.setVisible(true);
-    }//GEN-LAST:event_btnSiguenteActionPerformed
+    }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnSiguente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguente1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSiguente1ActionPerformed
 //Metodo para cargar las columnas en la tabla
     private void getColumn(){
         modeloTBLMascota = (DefaultTableModel) tblMascota.getModel();
@@ -449,13 +446,13 @@ public class Mascota extends javax.swing.JFrame {
         modeloTBLMascota.setColumnCount(0);
         modeloTBLMascota.setNumRows(0);
         
-        txtCodigo.setText("");
-        txtNickname.setText("");
-        txtEspecie.setText("");
-        txtColorPelo.setText("");
-        txtEspecie.setText("");
-        txtRaza.setText("");
-        txtFechaNacimiento.setText("");
+        txtIdentificacion.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtDireccion.setText("");
+        txtApellido.setText("");
+        txtTelefono.setText("");
+        txtCorreo.setText("");
         txtNumeroVacunas.setText("");
         txtNombreVacuna.setText("");
         
@@ -475,32 +472,33 @@ public class Mascota extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Mascota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dueño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Mascota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dueño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Mascota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dueño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Mascota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dueño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mascota().setVisible(true);
+                new Dueño().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnSiguente;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnSiguente1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -508,17 +506,14 @@ public class Mascota extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblMascota;
-    private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtColorPelo;
-    private javax.swing.JTextField txtEspecie;
-    private javax.swing.JTextField txtFechaNacimiento;
-    private javax.swing.JTextField txtNickname;
-    private javax.swing.JTextField txtNombreVacuna;
-    private javax.swing.JTextField txtNumeroVacunas;
-    private javax.swing.JTextField txtRaza;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtIdentificacion;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

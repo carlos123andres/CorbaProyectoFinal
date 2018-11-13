@@ -86,6 +86,11 @@ public class PesoMascota extends javax.swing.JFrame {
             }
         ));
         tblPesoMascota.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tblPesoMascota.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPesoMascotaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblPesoMascota);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 290, 160));
@@ -139,6 +144,11 @@ public class PesoMascota extends javax.swing.JFrame {
         jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, -1, -1));
 
         btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
@@ -160,7 +170,7 @@ public class PesoMascota extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
        
-         if(txtNickname.getText().equals("")){
+        if(txtNickname.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Por favor, Digita el Nickname");
             txtNickname.requestFocus();
             return;
@@ -180,11 +190,11 @@ public class PesoMascota extends javax.swing.JFrame {
         PesoTabla objPeso = new PesoTabla(); 
          
         String nickname = txtNickname.getText();
-        String especie = txtFecha.getText();
+        String fecha = txtFecha.getText();
         String peso = txtPeso.getText();
          
         try {
-            boolean resultado = objPeso.insertarPeso(0, nickname, especie , peso);
+            boolean resultado = objPeso.insertarPeso(0, nickname, fecha , peso);
             if(resultado == true){
                 JOptionPane.showMessageDialog(null, "Se inserto un nuevo registro.");
                 //Utilizamos el objeto para limpiar todos los campos.
@@ -215,16 +225,124 @@ public class PesoMascota extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
+        
+         //Saber si la tabla esta vacia esto me permite decirle al Usuario que presione el boton de buscar registros.
+        if(tblPesoMascota.getRowCount() == 0){
+            JOptionPane.showMessageDialog(null, "Por favor, Presione el botón de Bucar" );
+            return;
+        }
+
+        if (tblPesoMascota.getSelectedRow()== -1) {
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione una fila");
+            return;
+        }
+        
+        
+        if(txtNickname.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Por favor, Digita el Nickname");
+            txtNickname.requestFocus();
+            return;
+        }
+         if(txtFecha.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Por favor, Digita la fecha");
+            txtFecha.requestFocus();
+            return;
+        }
+         if(txtPeso.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Por favor, Digita el peso");
+            txtPeso.requestFocus();
+            return;
+        }
+        
+        try {
+            
+            PesoTabla objPeso = new PesoTabla(); 
+         
+            int id = Integer.parseInt(txtId.getText());
+            String nickname = txtNickname.getText();
+            String fecha = txtFecha.getText();
+            String peso = txtPeso.getText();
+            
+            boolean resultado = objPeso.actualizarPeso(id, nickname, fecha, peso);
+            if (resultado == true) {
+                JOptionPane.showMessageDialog(null, "Se actualizó el registro.");
+                //Se realiza la limpieza al JTable
+                limpiar();
+                //Mostramos las columnas (La informacion que identifica a cada tabla en la BD)
+                cargarID();
+                getColumn();
+                //Actualizamos la tabla (Buscamos todos los registros)
+                cargarTabla();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al actualizar.");
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocurrió un problema , por favor intentalo de nuevo.");
+        }
+        
+        
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        //Saber si la tabla esta vacia esto me permite decirle al Usuario que presione el boton de buscar registros.
+        if(tblPesoMascota.getRowCount() == 0){
+            JOptionPane.showMessageDialog(null, "Por favor, Presione el botón de Bucar");
+            return;
+        }
+
+        if (tblPesoMascota.getSelectedRow()== -1) {
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione una fila");
+            return;
+        }
+
+        PesoTabla objPeso = new PesoTabla();
+
+
+        try {
+            
+            int id = Integer.parseInt(txtId.getText());
+
+            boolean resultado = objPeso.eliminarPeso(id);
+            if(resultado == true){
+                JOptionPane.showMessageDialog(null, "Se Eliminó el registro correctamente.");
+                limpiar();
+                cargarID();
+                getColumn();
+                cargarTabla();
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al Eliminar.");
+            }  
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Lo sentimos, ocurrió algo inesperado ¡Por favor, vuelva a intentarlo!" + e);
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void tblPesoMascotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPesoMascotaMouseClicked
+       // Defino el modelo para el JTable
+        modeloTBLPeso = (DefaultTableModel) tblPesoMascota.getModel();
+        
+        // Asigno el elemento seleccionado de la tabla a los respectivos campos del formulario
+        try {
+            txtId.setText(String.valueOf(modeloTBLPeso.getValueAt(tblPesoMascota.getSelectedRow(), 0)));
+            txtNickname.setText(String.valueOf(modeloTBLPeso.getValueAt(tblPesoMascota.getSelectedRow(), 1)));
+            txtFecha.setText(String.valueOf(modeloTBLPeso.getValueAt(tblPesoMascota.getSelectedRow(), 2)));
+            txtPeso.setText(String.valueOf(modeloTBLPeso.getValueAt(tblPesoMascota.getSelectedRow(), 3)));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Lo sentimos, ocurrió algo inesperado al momento de seleccionar una fila");
+        }                       
+    }//GEN-LAST:event_tblPesoMascotaMouseClicked
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        this.dispose();
+        Mascota mostrarVentana = new Mascota();
+        
+        mostrarVentana.setVisible(true);
+    }//GEN-LAST:event_btnAtrasActionPerformed
 //Metodo para cargar las columnas en la tabla
     private void getColumn(){
         modeloTBLPeso = (DefaultTableModel) tblPesoMascota.getModel();
@@ -257,14 +375,14 @@ public class PesoMascota extends javax.swing.JFrame {
     
     private void cargarID(){
         PesoTabla objPeso = new PesoTabla();
-        ResultSet resultado = objPeso.cargarPeso();
+        ResultSet resultado = objPeso.cargarID();
         int contador = 0;
         
         try {
             // Incremento el contador para almacenar el registro con este nuevo indice
             resultado.next();
             
-            contador = resultado.getInt("id") + 1;
+            contador = resultado.getInt(1) + 1;
             
             txtId.setText(String.valueOf(contador));
         } catch (Exception e) {
@@ -282,7 +400,6 @@ public class PesoMascota extends javax.swing.JFrame {
         modeloTBLPeso.setColumnCount(0);
         modeloTBLPeso.setNumRows(0);
         
-        txtId.setText("");
         txtNickname.setText("");
         txtFecha.setText("");
         txtPeso.setText("");

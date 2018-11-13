@@ -39,7 +39,7 @@ public class PesoTabla extends PesoPOA{
     public boolean actualizarPeso(int id, String apodo, String fecha, String peso) {
         boolean resultado = false;
         try {
-            String sql = "UPDATE peso SET apodo = '"+apodo+"', fecha = '"+fecha+"', peso = '"+peso+"' where id = '"+id+"' ";
+            String sql = "UPDATE peso SET nickname = '"+apodo+"', fecha = '"+fecha+"', peso = '"+peso+"' where id = '"+id+"' ";
             //Se realiza la conexión con la base de datos
             objConect.conectar();
             Statement st = objConect.conex.createStatement();
@@ -134,7 +134,7 @@ public class PesoTabla extends PesoPOA{
        
        
         try {
-            String sqlConsultar = "SELECT MAX(P.id) FROM peso P";
+            String sqlConsultar = "SELECT MAX(id) FROM peso";
             //Se realiza la conexión con la base de datos
             objConect.conectar();
             Statement st = objConect.conex.createStatement();

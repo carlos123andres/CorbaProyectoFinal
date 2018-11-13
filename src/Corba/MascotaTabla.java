@@ -55,7 +55,7 @@ public class MascotaTabla extends MascotaPOA{
     public boolean eliminarMascota(int codigo) {
         boolean resultado = false;
         try {
-            String sql = "Delete from credenciales where codigo = " +codigo;
+            String sql = "Delete from mascota where codigo = " +codigo;
             //Se realiza la conexión con la base de datos
             objConect.conectar();
             Statement st = objConect.conex.createStatement();
