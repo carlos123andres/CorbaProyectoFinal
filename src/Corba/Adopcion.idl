@@ -1,0 +1,14 @@
+module Adopciones {
+    interface Adopcion{
+        
+        boolean insertarAdopcion(in long cedula, in long idMascota, in wstring nombre, in wstring direccion, in wstring correo, in wstring nacionalidad, in long edad);
+        
+        boolean actualizarAdopcion(in long cedula, in long idMascota, in wstring nombre, in wstring direccion, in wstring correo, in wstring nacionalidad, in long edad);        
+
+        boolean eliminarAdopcion(in long cedula);
+        
+        wstring consultarAdopcion(in long cedula);
+       
+        oneway void shutdown();  
+    };
+};
