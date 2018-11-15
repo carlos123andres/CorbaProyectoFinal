@@ -97,7 +97,7 @@ public class PesoMascota extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel7.setText("Peso Mascota");
+        jLabel7.setText("PESO MASCOTA");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
 
         btnLimpiar.setText("Limpiar");
