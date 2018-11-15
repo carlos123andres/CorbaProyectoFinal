@@ -1,19 +1,22 @@
-
 package Corba;
+
 import ConexionBD.ConexionBaseDato;
-import Mascotas.*;
+import Corba.Adopciones.AdopcionPOA;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-public class MascotaTabla extends MascotaPOA{
-     ConexionBaseDato objConect = new ConexionBaseDato(); 
-     
+
+public class AdopcionTabla extends AdopcionPOA{
+
+    ConexionBaseDato objConect = new ConexionBaseDato(); 
+    
     @Override
-    public boolean insertarMascota(int codigo, String apodo, String especie, String raza, String colorPelo, String fechaNacimiento, int numeroVacuna, String nombreVacuna) {
+    public boolean insertarAdopcion(int cedula, int idMascota, String nombre, String direccion, String correo, String nacionalidad, int edad) {
+        
         boolean resultado = false;
         try {
-            String sql = "insert into mascota (codigo,apodo,especie,raza,colorPelo, fechaNacimiento, numeroVacunas, nombreVacunas) values ('"+codigo+"','"+apodo+"','"+especie+"','"+raza+"','"+colorPelo+"','"+fechaNacimiento+"','"+numeroVacuna+"','"+nombreVacuna+"')";
+            String sql = "insert into adopcion (cedula,mascota_id,nombre,direccion,correo,nacionalidad,edad) values ('"+cedula+"','"+idMascota+"','"+nombre+"','"+direccion+"','"+correo+"','"+nacionalidad+"','"+edad+"')";
             objConect.conectar();
             Statement st = objConect.conex.createStatement();
             int valor = st.executeUpdate(sql);
@@ -27,14 +30,24 @@ public class MascotaTabla extends MascotaPOA{
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Lo sentimos, el código o el usuario ya se encuentran registrados. ¡Por favor, vuelva a intentarlo!" + e.getMessage()); 
         }        
-        return resultado; 
+        return resultado;
+        
     }
 
     @Override
-    public boolean actualizarMascota(int codigo, String apodo, String especie, String raza, String colorPelo, String fechaNacimiento, int numeroVacuna, String nombreVacuna) {
+    public boolean actualizarAdopcion(int cedula, int idMascota, String nombre, String direccion, String correo, String nacionalidad, int edad) {
         boolean resultado = false;
+        String sql = "";
         try {
-            String sql = "UPDATE mascota SET apodo = '"+apodo+"', especie = '"+especie+"', raza = '"+raza+"', colorPelo = '"+colorPelo+"', fechaNacimiento = '"+fechaNacimiento+"', numeroVacunas = '"+numeroVacuna+"', nombreVacunas = '"+nombreVacuna+"' where codigo = '"+codigo+"' ";
+            
+            if (idMascota == 0 ) {
+                
+                sql = "UPDATE adopcion SET nombre = '"+nombre+"', direccion = '"+direccion+"', correo = '"+correo+"', nacionalidad = '"+nacionalidad+"', edad = '"+edad+"' where cedula = '"+cedula+"' ";
+            }
+            else {
+                sql = "UPDATE adopcion SET mascota_id = '"+idMascota+"', nombre = '"+nombre+"', direccion = '"+direccion+"', correo = '"+correo+"', nacionalidad = '"+nacionalidad+"', edad = '"+edad+"' where cedula = '"+cedula+"' ";
+            }
+
             //Se realiza la conexión con la base de datos
             objConect.conectar();
             Statement st = objConect.conex.createStatement();
@@ -52,10 +65,10 @@ public class MascotaTabla extends MascotaPOA{
     }
 
     @Override
-    public boolean eliminarMascota(int codigo) {
+    public boolean eliminarAdopcion(int cedula) {
         boolean resultado = false;
         try {
-            String sql = "Delete from mascota where codigo = " +codigo;
+            String sql = "Delete from adopcion where cedula = " +cedula;
             //Se realiza la conexión con la base de datos
             objConect.conectar();
             Statement st = objConect.conex.createStatement();
@@ -73,12 +86,12 @@ public class MascotaTabla extends MascotaPOA{
     }
 
     @Override
-    public String consultarMascota(int codigo) {
+    public String consultarAdopcion(int cedula) {
         String resultado = "";
         
         try {
             
-            String sqlConsultar = "Select * from credenciales where codigo = " + codigo;
+            String sqlConsultar = "Select * from adopcion where cedula = " + cedula;
             //Se realiza la conexión con la base de datos
             objConect.conectar();
             Statement st = objConect.conex.createStatement();
@@ -101,12 +114,12 @@ public class MascotaTabla extends MascotaPOA{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public ResultSet cargarMascota(){
+    public ResultSet cargarAdopcion(){
         
        ResultSet resultado = null;
        
         try {
-            String sqlConsultar = "SELECT  M.codigo, M.apodo, M.especie, M.raza, M.colorPelo, M.fechaNacimiento, M.numeroVacunas, M.nombreVacunas FROM mascota M ";
+            String sqlConsultar = "SELECT A.cedula, M.apodo, A.nombre, A.direccion, A.correo, A.nacionalidad, A.edad FROM adopcion A , mascota M WHERE A.mascota_id = M.codigo";
             //Se realiza la conexión con la base de datos
             objConect.conectar();
             Statement st = objConect.conex.createStatement();
@@ -121,5 +134,8 @@ public class MascotaTabla extends MascotaPOA{
         }
        return resultado;
     }
+   
+    
+    
     
 }
