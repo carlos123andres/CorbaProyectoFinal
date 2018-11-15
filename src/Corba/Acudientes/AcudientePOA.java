@@ -1,4 +1,4 @@
-package Acudientes;
+package Corba.Acudientes;
 
 
 /**
@@ -9,7 +9,7 @@ package Acudientes;
 */
 
 public abstract class AcudientePOA extends org.omg.PortableServer.Servant
- implements Acudientes.AcudienteOperations, org.omg.CORBA.portable.InvokeHandler
+ implements Corba.Acudientes.AcudienteOperations, org.omg.CORBA.portable.InvokeHandler
 {
 
   // Constructors

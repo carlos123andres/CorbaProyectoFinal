@@ -47,6 +47,7 @@ public class Dueño extends javax.swing.JFrame {
         btnAtras = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtIdentificacion = new javax.swing.JTextField();
+        btnSiguente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,7 +104,7 @@ public class Dueño extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel7.setText("Acudiente");
+        jLabel7.setText("ACUDIENTE");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
 
         btnLimpiar.setText("Limpiar");
@@ -159,6 +160,14 @@ public class Dueño extends javax.swing.JFrame {
         jLabel8.setText("Identificacion");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
         jPanel1.add(txtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 110, -1));
+
+        btnSiguente.setText("Siguiente");
+        btnSiguente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguenteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSiguente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 400));
 
@@ -355,6 +364,13 @@ public class Dueño extends javax.swing.JFrame {
         
         mostrarVentana.setVisible(true);
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnSiguenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguenteActionPerformed
+        this.dispose();
+        Adopcion mostrarVentana = new Adopcion();
+
+        mostrarVentana.setVisible(true);
+    }//GEN-LAST:event_btnSiguenteActionPerformed
 //Metodo para cargar las columnas en la tabla
     private void getColumn(){
         modeloTBLAcudiente = (DefaultTableModel) tblAcudiente.getModel();
@@ -445,6 +461,7 @@ public class Dueño extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnSiguente;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

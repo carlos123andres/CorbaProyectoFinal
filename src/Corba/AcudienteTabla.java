@@ -1,6 +1,6 @@
 package Corba;
-import Acudientes.AcudientePOA;
 import ConexionBD.ConexionBaseDato;
+import Corba.Acudientes.AcudientePOA;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;

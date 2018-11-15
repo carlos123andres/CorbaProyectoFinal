@@ -1,4 +1,4 @@
-package Acudientes;
+package Corba.Acudientes;
 
 /**
 * Acudientes/AcudienteHolder.java .
@@ -9,30 +9,30 @@ package Acudientes;
 
 public final class AcudienteHolder implements org.omg.CORBA.portable.Streamable
 {
-  public Acudientes.Acudiente value = null;
+  public Corba.Acudientes.Acudiente value = null;
 
   public AcudienteHolder ()
   {
   }
 
-  public AcudienteHolder (Acudientes.Acudiente initialValue)
+  public AcudienteHolder (Corba.Acudientes.Acudiente initialValue)
   {
     value = initialValue;
   }
 
   public void _read (org.omg.CORBA.portable.InputStream i)
   {
-    value = Acudientes.AcudienteHelper.read (i);
+    value = (Acudiente) Corba.Acudientes.AcudienteHelper.read (i);
   }
 
   public void _write (org.omg.CORBA.portable.OutputStream o)
   {
-    Acudientes.AcudienteHelper.write (o, value);
+    Corba.Acudientes.AcudienteHelper.write (o, value);
   }
 
   public org.omg.CORBA.TypeCode _type ()
   {
-    return Acudientes.AcudienteHelper.type ();
+    return Corba.Acudientes.AcudienteHelper.type ();
   }
 
 }

@@ -1,4 +1,4 @@
-package Acudientes;
+package Corba.Acudientes;
 
 
 /**
@@ -12,7 +12,7 @@ abstract public class AcudienteHelper
 {
   private static String  _id = "IDL:Acudientes/Acudiente:1.0";
 
-  public static void insert (org.omg.CORBA.Any a, Acudientes.Acudiente that)
+  public static void insert (org.omg.CORBA.Any a, Corba.Acudientes.Acudiente that)
   {
     org.omg.CORBA.portable.OutputStream out = a.create_output_stream ();
     a.type (type ());
@@ -20,7 +20,7 @@ abstract public class AcudienteHelper
     a.read_value (out.create_input_stream (), type ());
   }
 
-  public static Acudientes.Acudiente extract (org.omg.CORBA.Any a)
+  public static Corba.Acudientes.Acudiente extract (org.omg.CORBA.Any a)
   {
     return read (a.create_input_stream ());
   }
@@ -30,7 +30,7 @@ abstract public class AcudienteHelper
   {
     if (__typeCode == null)
     {
-      __typeCode = org.omg.CORBA.ORB.init ().create_interface_tc (Acudientes.AcudienteHelper.id (), "Acudiente");
+      __typeCode = org.omg.CORBA.ORB.init ().create_interface_tc (Corba.Acudientes.AcudienteHelper.id (), "Acudiente");
     }
     return __typeCode;
   }
@@ -40,43 +40,43 @@ abstract public class AcudienteHelper
     return _id;
   }
 
-  public static Acudientes.Acudiente read (org.omg.CORBA.portable.InputStream istream)
+  public static Corba.Acudientes.Acudiente read (org.omg.CORBA.portable.InputStream istream)
   {
     return narrow (istream.read_Object (_AcudienteStub.class));
   }
 
-  public static void write (org.omg.CORBA.portable.OutputStream ostream, Acudientes.Acudiente value)
+  public static void write (org.omg.CORBA.portable.OutputStream ostream, Corba.Acudientes.Acudiente value)
   {
     ostream.write_Object ((org.omg.CORBA.Object) value);
   }
 
-  public static Acudientes.Acudiente narrow (org.omg.CORBA.Object obj)
+  public static Corba.Acudientes.Acudiente narrow (org.omg.CORBA.Object obj)
   {
     if (obj == null)
       return null;
-    else if (obj instanceof Acudientes.Acudiente)
-      return (Acudientes.Acudiente)obj;
+    else if (obj instanceof Corba.Acudientes.Acudiente)
+      return (Corba.Acudientes.Acudiente)obj;
     else if (!obj._is_a (id ()))
       throw new org.omg.CORBA.BAD_PARAM ();
     else
     {
       org.omg.CORBA.portable.Delegate delegate = ((org.omg.CORBA.portable.ObjectImpl)obj)._get_delegate ();
-      Acudientes._AcudienteStub stub = new Acudientes._AcudienteStub ();
+      Corba.Acudientes._AcudienteStub stub = new Corba.Acudientes._AcudienteStub ();
       stub._set_delegate(delegate);
       return stub;
     }
   }
 
-  public static Acudientes.Acudiente unchecked_narrow (org.omg.CORBA.Object obj)
+  public static Corba.Acudientes.Acudiente unchecked_narrow (org.omg.CORBA.Object obj)
   {
     if (obj == null)
       return null;
-    else if (obj instanceof Acudientes.Acudiente)
-      return (Acudientes.Acudiente)obj;
+    else if (obj instanceof Corba.Acudientes.Acudiente)
+      return (Corba.Acudientes.Acudiente)obj;
     else
     {
       org.omg.CORBA.portable.Delegate delegate = ((org.omg.CORBA.portable.ObjectImpl)obj)._get_delegate ();
-      Acudientes._AcudienteStub stub = new Acudientes._AcudienteStub ();
+      Corba.Acudientes._AcudienteStub stub = new Corba.Acudientes._AcudienteStub ();
       stub._set_delegate(delegate);
       return stub;
     }

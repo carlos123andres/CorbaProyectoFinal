@@ -1,4 +1,4 @@
-package Acudientes;
+package Corba.Acudientes;
 
 
 /**

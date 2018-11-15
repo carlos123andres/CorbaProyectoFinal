@@ -1,0 +1,15 @@
+module Donaciones {
+    interface Donacion{
+        
+        boolean insertarDonacion(in long cedula, in wstring nombreDonante, in wstring tipoMascota, in long numeroMascota);
+
+        boolean actualizarDonacion(in long cedula, in wstring nombreDonante, in wstring tipoMascota, in long numeroMascota);
+        
+        boolean eliminarDonacion(in long cedula);
+        
+        wstring consultarDonacion(in long cedula);
+       
+        oneway void shutdown();  
+    };
+};
+
